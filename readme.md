@@ -70,6 +70,8 @@ plugins: [
     feeds: [
       {
         name: 'feed', // This determines the name of your feed file => feed.json & feed.xml
+        path: "/",
+        addToHeader: false,
         query: `
         {
           allMarkdownRemark(
