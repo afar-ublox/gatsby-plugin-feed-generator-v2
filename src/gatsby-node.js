@@ -21,16 +21,18 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
       site,
       items: feedItems,
       name: feed.name,
+      addToHeader: feed.addToHeader ? feed.addToHeader : true,
+      path: feed.path && feed.path !== "" ? feed.path : publicPath,
       ...feed.options,
     })
     if (options.json) {
       console.log(`Generating JSON feed for ${feed.name}.json`)
       await writeFile(
-        path.join(publicPath, `${feed.name}.json`),
+        path.join(feed.path, `${feed.name}.json`),
         output.json1(),
         'utf8'
       ).catch(r => {
-        console.log(`Failed to write ${feed.name}.json file: `, r)
+        console.log(`Failed to write ${feed.path}/${feed.name}.json file: `, r)
       })
     }
 
@@ -38,11 +40,11 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
       console.log(`Generating RSS feed for ${feed.name}.xml`)
 
       await writeFile(
-        path.join(publicPath, `${feed.name}.xml`),
+        path.join(feed.path, `${feed.name}.xml`),
         output.rss2(),
         'utf8'
       ).catch(r => {
-        console.log(`Failed to write ${feed.name}.xml file: `, r)
+        console.log(`Failed to write ${feed.path}/${feed.name}.xml file: `, r)
       })
     }
   }
