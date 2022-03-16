@@ -1,14 +1,14 @@
 {
-  "name": "gatsby-plugin-feed-generator",
-  "version": "2.0.5",
-  "description": "Generate RSS and JSON feeds for a Gatsby blog",
+  "name": "@u-blox/feed-builder-gatsby",
+  "version": "1.0.2",
+  "description": "Generate RSS and JSON feeds for a Gatsby website at custom location",
   "scripts": {
     "build": "babel src --out-dir . ",
     "watch": "babel -w src --out-dir . "
   },
-  "author": "Mark Michon <hello@markmichon.com>",
+  "author": "Ahmad Faryab Kokab <ahmad.faryab@u-blox.com>",
   "license": "MIT",
-  "repository": "markmichon/gatsby-plugin-feed-generator",
+  "repository": "afar-ublox/gatsby-plugin-feed-generator-v2",
   "keywords": [
     "gatsby",
     "gatsby-plugin",

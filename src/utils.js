@@ -1,7 +1,7 @@
 import { Feed } from 'feed'
 import urlJoin from 'url-join'
 
-const buildFeed = ({ site, items, name, options = {} }) => {
+const buildFeed = ({ site, items, name, addToHeader, path, options = {} }) => {
   const { siteUrl, description, title, author } = site.siteMetadata
   const feed = new Feed({
     title: title,

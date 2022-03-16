@@ -1,4 +1,4 @@
-# gatsby-plugin-feed-generator
+# @u-blox/feed-builder-gatsby
 
 A [Gatsby](https://gatsbyjs.org) plugin to generate [JSON Feed](https://jsonfeed.org/) and RSS feeds for generated [Gatsby](https://gatsbyjs.org) sites.
 
@@ -7,7 +7,13 @@ A [Gatsby](https://gatsbyjs.org) plugin to generate [JSON Feed](https://jsonfeed
 To get started, install via yarn or npm:
 
 ```bash
-yarn add gatsby-plugin-feed-generator
+yarn add @u-blox/feed-builder-gatsby
+
+//OR
+
+npm i @u-blox/feed-builder-gatsby
+
+
 ```
 
 Basic setup requires the following minimum siteMetaData located in your `gatsby-config.js` file:
@@ -26,7 +32,7 @@ To activate and configure the plugin add it to the plugins array in the gatsby c
 ```js
 plugins: [
   {
-    resolve: 'gatsby-plugin-feed-generator',
+    resolve: '@u-blox/feed-builder-gatsby',
     options: {
       //...
     },
@@ -50,7 +56,7 @@ siteMetadata {
 },
 plugins: [
   {
-    resolve: 'gatsby-plugin-feed-generator',
+    resolve: '@u-blox/feed-builder-gatsby',
     options: {
     generator: `GatsbyJS`,
     rss: true, // Set to true to enable rss generation
@@ -70,8 +76,8 @@ plugins: [
     feeds: [
       {
         name: 'feed', // This determines the name of your feed file => feed.json & feed.xml
-        path: "/",
-        addToHeader: false,
+        path: "/", //Where you want to save the output default in case of / or empty it will be public
+        addToHeader: false, //Push This feed to header
         query: `
         {
           allMarkdownRemark(
@@ -95,7 +101,7 @@ plugins: [
           return allMarkdownRemark.edges.map(edge => {
             return {
               title: edge.node.frontmatter.title,
-              date: edge.node.frontmatter.date,
+              date: parseInt(edge.node.frontmatter.date) * 1000, // Multiply In case you have unix timestamp
               url: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
               html: edge.node.html,
             }
@@ -119,6 +125,8 @@ Above we saw markdown used, however other formats should work as well. Here's an
 feeds: [
           {
             name: 'mdx-feed',
+            path: "/",
+            addToHeader: false,
             query: `
             {
               allMdx(

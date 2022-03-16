@@ -1,1 +1,1 @@
-// gatsby-plugin-feed-generator
+// @u-blox/feed-builder-gatsby
