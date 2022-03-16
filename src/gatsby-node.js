@@ -22,7 +22,7 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
       items: feedItems,
       name: feed.name,
       addToHeader: feed.addToHeader ? feed.addToHeader : true,
-      path: feed.path && feed.path !== "" ? feed.path : publicPath,
+      path: feed.path ? feed.path : publicPath,
       ...feed.options,
     })
     if (options.json) {
