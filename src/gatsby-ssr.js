@@ -6,8 +6,11 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
 
   let output = []
 
-  if(feed.addToHeader === true){
-    for (let feed of feeds) {
+  
+  for (let feed of feeds) {
+
+    if(feed.addToHeader === true){
+
       let siteUrl = feed.baseUrl || '/'
       if (rss) {
         let rssurl = urlJoin(siteUrl, feed.name).replace(/\/+$/, '') + '.xml'
