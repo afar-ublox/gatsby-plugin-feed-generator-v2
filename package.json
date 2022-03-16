@@ -1,6 +1,6 @@
 {
   "name": "@u-blox/feed-builder-gatsby",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate RSS and JSON feeds for a Gatsby website at custom location",
   "scripts": {
     "build": "babel src --out-dir . ",
