@@ -2,9 +2,11 @@ import React from 'react'
 import urlJoin from 'url-join'
 import { withPrefix } from 'gatsby'
 exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
-  const { rss, json, feeds, baseUrl } = pluginOptions;
+  const { rss, json, feeds, baseUrl, putnoIndex } = pluginOptions;
 
-  let output = []
+  let output = [];
+
+  console.log(putnoIndex);
 
   
   for (let feed of feeds) {
@@ -35,6 +37,12 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
           />
         )
       }
+      if(putnoIndex == true){
+        output.push(
+          <meta name="robots" content="noindex" />
+        )
+      }
+      
     }
   }
   setHeadComponents(output)
