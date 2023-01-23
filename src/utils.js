@@ -25,6 +25,7 @@ const buildFeed = ({ site, items, name, addToHeader, path, options = {} }) => {
   for (let item of items) {
     const { title, url, date, html, excerpt = '', ...rest } = item
     const d = typeof date === 'object' ? date : new Date(date)
+    console.log(d, date)
     feed.addItem({
       title,
       link: url,
