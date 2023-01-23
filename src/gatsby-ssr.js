@@ -6,7 +6,7 @@ exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
 
   let output = [];
 
-  console.log(putnoIndex);
+  // console.log(putnoIndex);
 
   
   for (let feed of feeds) {
